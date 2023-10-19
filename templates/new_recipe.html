@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Adding a recipe</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+
+    <form method="POST">
+        <input type="text" name="content" id="content">
+        <input type="submit" value="Add recipe">
+    </form>
+
+    <h4>{{ recipe_to_add }}</h4>
+
+</div>
+{% endblock %}
+
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Recipe planner</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <a href="/new_recipe">Add a recipe</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>URL</th>
+            <th>FLG</th>        
+        </tr>
+        {% for recipe in recipes %}
+            <tr>
+                <td>{{ recipe.ID }}</td>
+                <td>{{ recipe.NAME }}</td>
+                <td>{{ recipe.FLAG_MAIN }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}f
