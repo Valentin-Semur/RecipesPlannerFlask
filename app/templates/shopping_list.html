@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Recipe planner</title>
+{% endblock %}
+
+{% block body %}
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.input_text.label }}<br>
+            {{ form.input_text() }}
+        </div>
+        {{ form.submit() }}
+    </form>
+    <table>
+        <tr>
+            <th>NAME</th>
+            <th>ACTION</th>
+        </tr>
+        {% for recipe in recipes %}
+            <tr>
+                <td>{{ recipe.NAME }}</td>
+                <td><button onclick="alertValue(this)">Click Me</button></td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <script>
+        function alertValue(button) {
+            // Getting the previous sibling (td element) of the parent (td containing the button)
+            let recipeName = button.parentElement.previousElementSibling.textContent;
+            alert(recipeName);
+        }
+    </script>
+    
+{% endblock %}
