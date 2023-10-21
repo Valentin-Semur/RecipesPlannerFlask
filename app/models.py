@@ -18,7 +18,8 @@ class RECIPE_URLS(db.Model):
     
 
 class INGREDIENT_QUANTITIES(db.Model):
-    ID = db.Column(db.String(24), primary_key=True, nullable=False)
+    ID = db.Column(db.Integer, primary_key=True, nullable=False)
+    RECIPE_ID = db.Column(db.String(24), nullable=False)
     INGREDIENT = db.Column(db.String(100), nullable=False)
     QUANTITY_VALUE = db.Column(db.Float, nullable=False)
     QUANTITY_UNIT = db.Column(db.String(30), nullable=False)
@@ -28,12 +29,13 @@ class INGREDIENT_QUANTITIES(db.Model):
     
 
 class SHOPPING_LIST(db.Model):
-    INGREDIENT = db.Column(db.String(100), primary_key=True, nullable=False)
+    ID = db.Column(db.Integer, primary_key=True, nullable=False)
+    INGREDIENT = db.Column(db.String(100), nullable=False)
     QUANTITY_VALUE = db.Column(db.Float, nullable=False)
     QUANTITY_UNIT = db.Column(db.String(30), nullable=False)
 
     def __repr__(self):
-        return '<ShoppingList %r>' % self.INGREDIENT
+        return '<ShoppingList %r>' % self.ID
     
 
 class RECIPE_TAGS(db.Model):
@@ -45,7 +47,8 @@ class RECIPE_TAGS(db.Model):
     
 
 class RAW_INGREDIENTS(db.Model):
-    ID = db.Column(db.String(24), primary_key=True, nullable=False)
+    ID = db.Column(db.Integer, primary_key=True, nullable=False)
+    RECIPE_ID = db.Column(db.String(24), nullable=False)
     INGREDIENT = db.Column(db.String(100), nullable=False)
     QUANTITY = db.Column(db.String(100), nullable=False)
 
