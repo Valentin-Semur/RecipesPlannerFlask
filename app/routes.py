@@ -38,4 +38,9 @@ def shopping_list():
     if form.validate_on_submit():
         search_string = "%" + form.input_text.data + "%"
     recipes = RECIPE_INFO.query.filter(RECIPE_INFO.FLAG_MAIN == 1).filter(RECIPE_INFO.NAME.like(search_string)).all()
+
+    selected_recipe = request.form.get('selectedRecipe')
+    print(selected_recipe)
+    
     return render_template('shopping_list.html', form=form, recipes=recipes)
+

@@ -11,8 +11,6 @@ def ProcessNewRecipes(URL):
     AddRecipeInfo(URL)
 
 
-
-
 def ProcessIngredients(URL, soup): # Get & Insert ingredients 
     ingredient_list, quantity_list = GetIngredients(soup)
     InsertIngredients(URL, ingredient_list, quantity_list)

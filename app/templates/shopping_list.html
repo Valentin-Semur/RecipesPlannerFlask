@@ -12,26 +12,30 @@
             {{ form.input_text() }}
         </div>
         {{ form.submit() }}
-    </form>
-    <table>
-        <tr>
-            <th>NAME</th>
-            <th>ACTION</th>
-        </tr>
-        {% for recipe in recipes %}
+        
+        <input type="hidden" id="selectedRecipe" name="selectedRecipe">
+
+        <table>
             <tr>
-                <td>{{ recipe.NAME }}</td>
-                <td><button onclick="alertValue(this)">Click Me</button></td>
+                <th>NAME</th>
+                <th>ACTION</th>
             </tr>
-        {% endfor %}
-    </table>
-    
+            {% for recipe in recipes %}
+                <tr>
+                    <td>{{ recipe.NAME }}</td>
+                    <td><button type="button" onclick="alertValue(this)">Click Me</button></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </form>
+
     <script>
         function alertValue(button) {
-            // Getting the previous sibling (td element) of the parent (td containing the button)
             let recipeName = button.parentElement.previousElementSibling.textContent;
-            alert(recipeName);
+            console.log("Button clicked. Recipe Name:", recipeName); // New line for debugging
+            document.getElementById("selectedRecipe").value = recipeName;
+            let form = document.querySelector('form');
+            form.requestSubmit();
         }
     </script>
-    
 {% endblock %}
