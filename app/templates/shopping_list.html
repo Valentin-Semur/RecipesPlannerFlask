@@ -14,16 +14,21 @@
         {{ form.submit() }}
         
         <input type="hidden" id="selectedRecipe" name="selectedRecipe">
+        <input type="hidden" id="selectedNumber" name="selectedNumber">
 
         <table>
             <tr>
                 <th>NAME</th>
-                <th>ACTION</th>
             </tr>
             {% for recipe in recipes %}
                 <tr>
                     <td>{{ recipe.NAME }}</td>
-                    <td><button type="button" onclick="alertValue(this)">Click Me</button></td>
+                    <td><button type="button" onclick="alertValue(this)">1</button></td>
+                    <td><button type="button" onclick="alertValue(this)">2</button></td>
+                    <td><button type="button" onclick="alertValue(this)">3</button></td>
+                    <td><button type="button" onclick="alertValue(this)">4</button></td>
+                    <td><button type="button" onclick="alertValue(this)">5</button></td>
+                    <td><button type="button" onclick="alertValue(this)">6</button></td>
                 </tr>
             {% endfor %}
         </table>
@@ -31,9 +36,11 @@
 
     <script>
         function alertValue(button) {
-            let recipeName = button.parentElement.previousElementSibling.textContent;
-            console.log("Button clicked. Recipe Name:", recipeName); // New line for debugging
+            let recipeName = button.parentElement.parentElement.firstElementChild.textContent;
+            let numberCount = button.textContent;
+            console.log("Button clicked. Recipe Name:", recipeName, numberCount); // New line for debugging
             document.getElementById("selectedRecipe").value = recipeName;
+            document.getElementById("selectedNumber").value = numberCount;
             let form = document.querySelector('form');
             form.requestSubmit();
         }

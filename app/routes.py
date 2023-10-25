@@ -40,7 +40,8 @@ def shopping_list():
     recipes = RECIPE_INFO.query.filter(RECIPE_INFO.FLAG_MAIN == 1).filter(RECIPE_INFO.NAME.like(search_string)).all()
 
     selected_recipe = request.form.get('selectedRecipe')
-    print(selected_recipe)
+    selectedNumber = request.form.get('selectedNumber')
+    print(selectedNumber, selected_recipe)
     
     return render_template('shopping_list.html', form=form, recipes=recipes)
 
